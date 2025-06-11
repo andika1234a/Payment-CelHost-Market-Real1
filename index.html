@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cellow Hosting - Payment Options</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f9fc;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2b5876 0%, #4e4376 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+        
+        .payment-options {
+            padding: 20px;
+        }
+        
+        .payment-method {
+            background: #f9f9f9;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #4CAF50;
+        }
+        
+        .payment-method.blue {
+            border-left-color: #2196F3;
+        }
+        
+        .payment-method h2 {
+            margin-top: 0;
+            color: #2b5876;
+            display: flex;
+            align-items: center;
+        }
+        
+        .payment-method.blue h2 {
+            color: #2196F3;
+        }
+        
+        .payment-details {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            border: 1px solid #eee;
+        }
+        
+        .qr-code {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .qr-code img {
+            max-width: 250px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .copy-btn {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 10px;
+            font-size: 14px;
+        }
+        
+        .blue .copy-btn {
+            background: #2196F3;
+        }
+        
+        .note {
+            font-size: 14px;
+            color: #666;
+            margin-top: 30px;
+            padding: 15px;
+            background: #fff8e1;
+            border-radius: 5px;
+            border-left: 4px solid #ffc107;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 15px;
+            color: #666;
+            font-size: 14px;
+            border-top: 1px solid #eee;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                border-radius: 0;
+            }
+            
+            .header h1 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Cellow Hosting Payment Options</h1>
+        </div>
+        
+        <div class="payment-options">
+            <div class="payment-method">
+                <h2>DANA Payment</h2>
+                <p>Transfer to the following DANA account:</p>
+                
+                <div class="payment-details">
+                    <p><strong>Account Number:</strong> 
+                        <span id="dana-account">085150979963</span>
+                        <button class="copy-btn" onclick="copyToClipboard('dana-account')">Copy</button>
+                    </p>
+                    <p><strong>Account Name:</strong> E*I</p>
+                </div>
+            </div>
+            
+            <div class="payment-method blue">
+                <h2>GO-PAY Payment</h2>
+                <p>Transfer to the following GO-PAY account:</p>
+                
+                <div class="payment-details">
+                    <p><strong>Phone Number:</strong> 
+                        <span id="gopay-account">085150979963</span>
+                        <button class="copy-btn" onclick="copyToClipboard('gopay-account')">Copy</button>
+                    </p>
+                    <p><strong>Account Name:</strong> E*I</p>
+                </div>
+            </div>
+            
+            <div class="payment-method">
+                <h2>QRIS Payment</h2>
+                <p>Scan the QR code below to make payment:</p>
+                
+                <div class="qr-code">
+                    <img src="https://files.catbox.moe/c7iib8.jpg" alt="QRIS Payment">
+                </div>
+                
+                <div class="payment-details">
+                    <p><strong>Merchant Name:</strong> E*I</p>
+                </div>
+            </div>
+            
+            <div class="note">
+                <p><strong>Important:</strong> After making payment, please send the payment confirmation along with your order details to our customer service for verification.</p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            &copy; 2025 Cellow Hosting. All rights reserved.
+        </div>
+    </div>
+    
+    <script>
+        function copyToClipboard(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.innerText;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = element.innerText;
+                element.innerText = "Copied!";
+                
+                setTimeout(() => {
+                    element.innerText = originalText;
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
